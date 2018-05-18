@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- estos son los colores principales-->
+    <color name="ligth_green">#01797c</color>
+    <color name="dark_green">#0e4c57</color>
+    <color name="yellow">#fdfdd0</color>
+    <color name="dark_blue">#191e34</color>
+
+    <!-- colores de los puntos cuando estan inactivos -->
+    <color name="dot_dark_screen1">#b6b699</color>
+    <color name="dot_dark_screen4">#515568</color>
+
+    <!-- colores de los puntos cuano estan activos -->
+    <color name="dot_light_screen1">#f4f4dc</color>
+    <color name="dot_light_screen4">#32374e</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen1</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen1</item>
+    </array>
+</resources>
