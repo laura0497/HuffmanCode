@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HuffmanCode</string>
 
-    <string name="title_activity_welcome">Home Screen</string>
+    <string name="evaluate_text">Evaluar Texto</string>
 
     <string name="members">INTEGRANTES</string>
     <string name="choose">COMO QUIERES INGRESAR EL TEXTO?</string>

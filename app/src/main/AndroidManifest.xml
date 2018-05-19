@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".WriteActivity"></activity>
+        <activity android:name=".HuffmanCode"></activity>
     </application>
 
 </manifest>

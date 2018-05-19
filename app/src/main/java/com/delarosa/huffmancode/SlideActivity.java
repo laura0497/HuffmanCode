@@ -298,6 +298,9 @@ public class SlideActivity extends AppCompatActivity {
                 Uri uri = data.getData();
                 String fileContent = readTextFile(uri);
                 Toast.makeText(this, fileContent, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(SlideActivity.this, HuffmanCode.class);
+                intent.putExtra("text", fileContent);
+                startActivity(intent);
 
             } else {
                 Log.i("-------", data.toString());
@@ -371,7 +374,7 @@ public class SlideActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     intentFileActivity();
                 } else {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.permission_denied), Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.permission_denied), Toast.LENGTH_LONG).show();
                 }
                 break;
         }
