@@ -1,12 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center"
+    android:layout_height="match_parent"
     android:background="@color/yellow"
-    android:layout_height="match_parent">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <TextView
-        android:id="@+id/entropy_result"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginTop="35dp"
+                    android:backgroundTintMode="multiply"
+                    android:elevation="3dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/dot_light_screen1"
+                    app:cardCornerRadius="3dp"
+
+                    tools:cardCornerRadius="3dp"
+                    tools:cardElevation="3dp">
+
+
+                    <EditText
+                        android:id="@+id/text_to_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-thin"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_green"
+                        android:layout_gravity="center" />
+
+
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/entropy_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-thin"
+                android:layout_weight="0.47"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Entropia: 0,234566443232"
+                android:textColor="@color/dark_blue" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.20">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginTop="5dp"
+                    android:backgroundTintMode="multiply"
+                    android:elevation="3dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/dot_light_screen1"
+                    app:cardCornerRadius="3dp"
+                    tools:cardCornerRadius="3dp"
+                    tools:cardElevation="3dp">
+
+                    <TextView
+                        android:id="@+id/cabecera"
+                        android:textColor="@color/dark_green"
+                        android:layout_width="match_parent"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-thin"
+                        android:layout_height="wrap_content" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/codigo_huffman_text"
+                            android:layout_width="match_parent"
+                            android:textColor="@color/dark_blue"
+                            android:textStyle="bold"
+                            android:fontFamily="sans-serif-thin"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="20dp" />
+                    </LinearLayout>
+
+
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
 </LinearLayout>

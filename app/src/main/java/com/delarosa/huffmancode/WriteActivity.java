@@ -21,7 +21,7 @@ public class WriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
-
+        //agrego barra transparente en la vista
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
@@ -42,6 +42,10 @@ public class WriteActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * la app entra a este metodo cuando se toca el boton
+     * @param view
+     */
     public void evaluateText(View view) {
         if (!textToEvaluate.getText().equals("")) {
             Intent intent = new Intent(WriteActivity.this, HuffmanCode.class);
