@@ -11,7 +11,7 @@ abstract class frequencyTree implements Comparable<frequencyTree> {
         frequency = freq;
     }
 
-    // compares on the frequency
+    // compara la frecuencia
     public int compareTo(frequencyTree tree) {
         return frequency - tree.frequency;
     }

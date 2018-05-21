@@ -55,4 +55,11 @@ public class WriteActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ingresa una palabra", Toast.LENGTH_LONG).show();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(WriteActivity.this,SlideActivity.class);
+        startActivity(intent);
+    }
 }

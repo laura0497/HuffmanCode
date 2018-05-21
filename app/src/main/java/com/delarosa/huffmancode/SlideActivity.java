@@ -265,7 +265,7 @@ public class SlideActivity extends AppCompatActivity {
         public int getCount() {
             if (firstTime)
                 return layouts.length;
-            return layouts[2];
+            return 1;
         }
 
         @Override

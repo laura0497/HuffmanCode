@@ -85,7 +85,8 @@ public class HuffmanCode extends AppCompatActivity {
      * @return
      */
     private String evalText(String text) {
-        return Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+       return Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+
 
     }
 
@@ -97,7 +98,7 @@ public class HuffmanCode extends AppCompatActivity {
     private void evaluateCodeHuffman(String text) {
         try {
             //array que mide la frecuencia de cada simbolo
-            int[] frecuenciaList = new int[256];
+            int[] frecuenciaList = new int[258];
             //lee cada caracter del texto y lo asigna al array ascii
             for (char c : text.toCharArray())
                 frecuenciaList[c]++;
@@ -154,7 +155,11 @@ public class HuffmanCode extends AppCompatActivity {
         assert tree != null;
         if (tree instanceof frequencyLeaf) {
             frequencyLeaf leaf = (frequencyLeaf) tree;
-            String cadena = leaf.value + "       " + leaf.frequency + "          " + prefix;
+
+            if (prefix.length() == 0) {
+                prefix.append('0');
+            }
+            String cadena = String.format("%s %25s  %25s  ", leaf.value, leaf.frequency, prefix);
 
             if (refresh) {
                 codigoHuffmanText.setText("");

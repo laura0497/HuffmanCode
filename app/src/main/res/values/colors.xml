@@ -6,6 +6,7 @@
     <color name="dark_green">#0e4c57</color>
     <color name="yellow">#fdfdd0</color>
     <color name="dark_blue">#191e34</color>
+    <color name="white">#f7f7f6</color>
 
     <!-- colores de los puntos cuando estan inactivos -->
     <color name="dot_dark_screen1">#b6b699</color>
