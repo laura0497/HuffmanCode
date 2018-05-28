@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".WriteActivity"></activity>
         <activity android:name=".HuffmanCode"></activity>
+        <activity android:name=".DecodeHuffman"></activity>
     </application>
 
 </manifest>

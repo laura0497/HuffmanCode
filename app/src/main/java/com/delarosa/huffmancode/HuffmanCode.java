@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.text.Normalizer;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -18,6 +19,7 @@ public class HuffmanCode extends AppCompatActivity {
     private static int total;
     private static List<String> freqArray = new ArrayList<>();
     private static List<String> probArray = new ArrayList<>();
+    private static List<HuffmanDto> huffmanCode = new ArrayList<>();
     private static TextView entropyTextView, cabecera, codigoHuffmanText;
     private static EditText textToView;
     private static boolean refresh = false;
@@ -85,8 +87,12 @@ public class HuffmanCode extends AppCompatActivity {
      * @return
      */
     private String evalText(String text) {
-       return Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
-
+        text = (text.contains("á")) ? text.replace("á", "a") : text;
+        text = (text.contains("é")) ? text.replace("é", "e") : text;
+        text = (text.contains("í")) ? text.replace("í", "i") : text;
+        text = (text.contains("ó")) ? text.replace("ó", "o") : text;
+        text = (text.contains("ú")) ? text.replace("ú", "u") : text;
+        return text;
 
     }
 
@@ -161,8 +167,14 @@ public class HuffmanCode extends AppCompatActivity {
             }
             String cadena = String.format("%s %25s  %25s  ", leaf.value, leaf.frequency, prefix);
 
+            HuffmanDto huffmanDto = new HuffmanDto();
+            huffmanDto.setSymbol(String.valueOf(leaf.value));
+            huffmanDto.setCode(String.valueOf(prefix));
+            huffmanCode.add(huffmanDto);
+
             if (refresh) {
                 codigoHuffmanText.setText("");
+                huffmanCode = new ArrayList<>();
             }
             codigoHuffmanText.setText(String.valueOf(codigoHuffmanText.getText()) + "\n" + cadena);
             refresh = false;
@@ -187,8 +199,10 @@ public class HuffmanCode extends AppCompatActivity {
         }
     }
 
-    public static void main(String[] args) {
-
+    public void decode(View v) {
+        Intent intent = new Intent(HuffmanCode.this, DecodeHuffman.class);
+        intent.putExtra("huffmanCodeList", (Serializable) huffmanCode);
+        startActivity(intent);
     }
 
 
