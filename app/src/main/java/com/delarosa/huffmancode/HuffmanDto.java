@@ -2,6 +2,9 @@ package com.delarosa.huffmancode;
 
 import java.io.Serializable;
 
+/**
+ * entidad huffman.. DTO=Data Transfer Object
+ */
 public class HuffmanDto implements Serializable {
     public String symbol;
     public String code;

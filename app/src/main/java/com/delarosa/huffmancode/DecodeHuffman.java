@@ -13,6 +13,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * esta clase decodifica el huffman
+ */
 public class DecodeHuffman extends AppCompatActivity {
 
     private String text = "", textToShow = "";
@@ -35,12 +38,13 @@ public class DecodeHuffman extends AppCompatActivity {
             huffmanCode = new ArrayList<>();
         }
 
-        //nocion de controles graficos
+        //region nocion de controles graficos
         TextView entropyTextView = findViewById(R.id.entropy_result);
         entropyTextView.setVisibility(View.INVISIBLE);
         codigoHuffmanText = findViewById(R.id.codigo_huffman_text);
         EditText textToView = findViewById(R.id.text_to_view);
         textToView.setInputType(InputType.TYPE_CLASS_NUMBER);
+        //endregion
 
         //escuchador al texto.... cada vez que cambie lee el array y decodifica el huffman
         textToView.addTextChangedListener(new TextWatcher() {

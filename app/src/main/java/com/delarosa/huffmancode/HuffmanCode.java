@@ -105,13 +105,13 @@ public class HuffmanCode extends AppCompatActivity {
         try {
             //array que mide la frecuencia de cada simbolo
             int[] frecuenciaList = new int[258];
-            //lee cada caracter del texto y lo asigna al array ascii
+            //lee cada caracter del texto y lo asigna al array
             for (char c : text.toCharArray())
                 frecuenciaList[c]++;
 
             frequencyTree tree = buildTree(frecuenciaList);
             cabecera.setText("SIMBOLO\t FRECUENCIA\tCODIGO HUFFMAN");
-            printCodes(tree, new StringBuffer());
+
             for (String frecuency : freqArray) {
                 probArray.add(Double.toString(Double.parseDouble(frecuency) / total));
             }
@@ -122,29 +122,30 @@ public class HuffmanCode extends AppCompatActivity {
                 entropy = 0;
             entropyTextView.setText("entropia: " + String.valueOf(entropy) + " bit/simbolo");
 
+            printCodes(tree, new StringBuffer());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    // input is an array of frequencies, indexed by character code
+    // array de frecuencias
     public static frequencyTree buildTree(int[] charFreqs) {
         PriorityQueue<frequencyTree> trees = new PriorityQueue<frequencyTree>();
-        // initially, we have a forest of leaves
-        // one for each non-empty character
+        // inicialmnente tenemos muchas hojas
+        // uno para cada elemento vacio
         for (int i = 0; i < charFreqs.length; i++)
             if (charFreqs[i] > 0)
                 trees.offer(new frequencyLeaf(charFreqs[i], (char) i));
 
         assert trees.size() > 0;
-        // loop until there is only one tree left
+        // bucle hasta que solo quede un árbol
         while (trees.size() > 1) {
-            // two trees with least frequency
+            // dos arboles con la menor frecuencia
             frequencyTree a = trees.poll();
             frequencyTree b = trees.poll();
 
-            // put into new node and re-insert into queue
+            // ponemos en un nuevo nodo y volver a insertar en la cola
             trees.offer(new frequencyNode(a, b));
         }
         return trees.poll();
@@ -165,21 +166,28 @@ public class HuffmanCode extends AppCompatActivity {
             if (prefix.length() == 0) {
                 prefix.append('0');
             }
+
+            //justificamos el texto con espacios (25)
             String cadena = String.format("%s %25s  %25s  ", leaf.value, leaf.frequency, prefix);
 
-            HuffmanDto huffmanDto = new HuffmanDto();
-            huffmanDto.setSymbol(String.valueOf(leaf.value));
-            huffmanDto.setCode(String.valueOf(prefix));
-            huffmanCode.add(huffmanDto);
-
+            //si el texto queda vacio
             if (refresh) {
                 codigoHuffmanText.setText("");
                 huffmanCode = new ArrayList<>();
             }
+
+        //region agregamos el simbolo y su codigo correspondiente para una posible decodificacion
+            HuffmanDto huffmanDto = new HuffmanDto();
+            huffmanDto.setSymbol(String.valueOf(leaf.value));
+            huffmanDto.setCode(String.valueOf(prefix));
+            huffmanCode.add(huffmanDto);
+            //endregion
+
+            //mostramos el resultado
             codigoHuffmanText.setText(String.valueOf(codigoHuffmanText.getText()) + "\n" + cadena);
             refresh = false;
 
-
+            //para el calculo de la entropia
             total += leaf.frequency;
             freqArray.add(Integer.toString(leaf.frequency));
 
@@ -199,6 +207,10 @@ public class HuffmanCode extends AppCompatActivity {
         }
     }
 
+    /**
+     * este metodo me lleva a la clase que decodifica el huffman
+     * @param v
+     */
     public void decode(View v) {
         Intent intent = new Intent(HuffmanCode.this, DecodeHuffman.class);
         intent.putExtra("huffmanCodeList", (Serializable) huffmanCode);

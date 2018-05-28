@@ -297,7 +297,6 @@ public class SlideActivity extends AppCompatActivity {
                 // User pick the file
                 Uri uri = data.getData();
                 String fileContent = readTextFile(uri);
-                Toast.makeText(this, fileContent, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SlideActivity.this, HuffmanCode.class);
                 intent.putExtra("text", fileContent);
                 startActivity(intent);
