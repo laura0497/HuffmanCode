@@ -111,7 +111,7 @@ public class HuffmanCode extends AppCompatActivity {
 
             frequencyTree tree = buildTree(frecuenciaList);
             cabecera.setText("SIMBOLO\t FRECUENCIA\tCODIGO HUFFMAN");
-
+            printCodes(tree, new StringBuffer());
             for (String frecuency : freqArray) {
                 probArray.add(Double.toString(Double.parseDouble(frecuency) / total));
             }
@@ -122,7 +122,7 @@ public class HuffmanCode extends AppCompatActivity {
                 entropy = 0;
             entropyTextView.setText("entropia: " + String.valueOf(entropy) + " bit/simbolo");
 
-            printCodes(tree, new StringBuffer());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
